@@ -1,0 +1,18 @@
+<mat-card class="caution-card">
+    <mat-card-header>
+        <div mat-card-avatar class="caution-header-image"></div>
+        <mat-card-title>CAUTION</mat-card-title>
+        <mat-card-subtitle>
+            <div class='caution-content'>
+                This application only works on Chromium based browsers, as it uses experimental browser technologies
+                (<a target="_blank" href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a> & 
+                <a target="_blank" href="https://bugs.chromium.org/p/chromium/issues/detail?id=1043300">Web Serial</a>).
+            </div>
+            <div class='caution-content'>
+                Make sure you're using Chrome 85+ or Edge Chromium 85+, on Windows, Android, or macOS. 
+                Chrome on iOS, any version of Firefox or Safari is not compatible.
+            </div>
+            <strong>You're using chromium: {{ chromiumVersion }}</strong>
+        </mat-card-subtitle>
+    </mat-card-header>
+</mat-card>

@@ -1,0 +1,8 @@
+<div [ngStyle]="{'color': getColour()}" class="vertical-align">
+    <div *ngIf="statusConsumer; else noConnection">
+        CONNECTED TO DEVICE
+    </div>
+    <ng-template #noConnection>
+        NOT CONNECTED
+    </ng-template>
+</div>
