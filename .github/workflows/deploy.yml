@@ -63,7 +63,7 @@ jobs:
           USE_SSH: true
           GIT_USER: git
         run: |
-          /home/runner/work/fota-website/
+          cd /home/runner/work/fota-website/
           git config --global user.email "actions@gihub.com"
           git config --global user.name "gh-actions"
           if [ -e yarn.lock ]; then
@@ -73,4 +73,11 @@ jobs:
           else
           npm i
           fi
-          npx docusaurus deploy
+          npm run build
+          git clone https://github.com/asdasdsadasdas/asdasdsadasdas.github.io.git
+          cd asdasdsadasdas.github.io
+          rm -rf *
+          git commit -a -m "delete all"
+          cp -r ../dist/fota-website/* .
+          git commit -a -m "do deploy"
+          git push
