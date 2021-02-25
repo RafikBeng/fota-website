@@ -16,15 +16,16 @@ jobs:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     steps:
-     - name: checkout project for Test Build
+     - name: Checkout project for test build
        run: |
         git config --global user.email "actions@gihub.com"
+        git clone https://github.com/asdasdsadasdas/fota-website.git
      - uses: actions/setup-node@v1
        with:
          node-version: '12.x'
-     - name: Test Build
+     - name: Test if build succeeds
        run: |
-         cd /home/runner/work/website-content/website-content/airreps-site/
+         cd /home/runner/work/fota-website/
          if [ -e yarn.lock ]; then
          yarn install --frozen-lockfile
          elif [ -e package-lock.json ]; then
@@ -40,7 +41,7 @@ jobs:
       - name: checkout website for deployment
         run: |
          git config --global user.email "actions@gihub.com"
-         git clone https://github.com/AirReps/airreps-site.git --recursive
+         git clone https://github.com/asdasdsadasdas/fota-website.git
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
@@ -62,7 +63,7 @@ jobs:
           USE_SSH: true
           GIT_USER: git
         run: |
-          cd /home/runner/work/website-content/website-content/airreps-site/
+          /home/runner/work/fota-website/
           git config --global user.email "actions@gihub.com"
           git config --global user.name "gh-actions"
           if [ -e yarn.lock ]; then
