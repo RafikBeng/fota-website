@@ -65,6 +65,7 @@ jobs:
           GIT_USER: git
         run: |
           pwd
+          ls
           cd /home/runner/work/fota-website/fota-website/
           pwd
           git config --global user.email "actions@gihub.com"
