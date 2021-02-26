@@ -77,7 +77,8 @@ jobs:
           npm run build
           git clone https://github.com/asdasdsadasdas/asdasdsadasdas.github.io.git
           cd asdasdsadasdas.github.io
-          git config --global user.email "actions@gihub.com"
+          git config user.email "actions@gihub.com"
+          git config user.name "gh-actions"
           rm -rf *
           git commit -a -m "delete all"
           cp -r ../dist/fota-web/* .
