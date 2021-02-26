@@ -84,4 +84,4 @@ jobs:
           cp -r ../dist/fota-web/* .
           git add .
           git commit -m "commit to deploy"
-          git push
+          git push --set-upstream origin main
