@@ -80,5 +80,6 @@ jobs:
           rm -rf *
           git commit -a -m "delete all"
           cp -r ../dist/fota-web/* .
-          git commit -a -m "do deploy"
+          git add .
+          git commit -m "commit to deploy"
           git push
