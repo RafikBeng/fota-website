@@ -76,12 +76,9 @@ jobs:
           fi
           npm run build
           git clone https://github.com/asdasdsadasdas/asdasdsadasdas.github.io.git
-          pwd
           cd asdasdsadasdas.github.io
-          pwd
-          ls
           rm -rf *
           git commit -a -m "delete all"
-          cp -r ../dist/fota-website/* .
+          cp -r ../dist/fota-web/* .
           git commit -a -m "do deploy"
           git push
