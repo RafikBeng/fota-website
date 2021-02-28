@@ -79,6 +79,7 @@ jobs:
           cd asdasdsadasdas.github.io
           git config user.email "actions@gihub.com"
           git config user.name "gh-actions"
+          git config --list
           rm -rf *
           git commit -a -m "delete all"
           cp -r ../dist/fota-web/* .
