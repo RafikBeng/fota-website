@@ -77,12 +77,10 @@ jobs:
           npm run build
           git clone https://github.com/asdasdsadasdas/asdasdsadasdas.github.io.git
           cd asdasdsadasdas.github.io
-          git config user.email "actions@gihub.com"
-          git config user.name "gh-actions"
           git config --list
           rm -rf *
           git commit -a -m "delete all"
           cp -r ../dist/fota-web/* .
           git add .
           git commit -m "commit to deploy"
-          git push --set-upstream origin main
+          git push
