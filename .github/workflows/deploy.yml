@@ -77,6 +77,7 @@ jobs:
           npm run build
           git clone https://github.com/asdasdsadasdas/asdasdsadasdas.github.io.git
           cd asdasdsadasdas.github.io
+          git config --global credential.helper wincred
           git config --list
           rm -rf *
           git commit -a -m "delete all"
