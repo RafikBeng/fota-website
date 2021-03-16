@@ -1,9 +1,10 @@
-.card {
-    min-width: 400px;
-    max-width: 50%;
-    min-height: 40%;
-    max-height: 50%;
+.card-container {
     padding: 3%;
+
+    .card {
+        height: 25%;
+        width: 35%;
+    }
 
     .header-image {
         background-image: url("../../assets/airreps-headset.png");

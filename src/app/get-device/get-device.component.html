@@ -1,30 +1,24 @@
 <app-caution-header></app-caution-header>
 
-<div class="card">
-  <mat-card class="example-card">
+<div class="card-container">
+  <mat-card class="card">
   
     <mat-card-header>
       <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>AirPods Firmware Flasher</mat-card-title>
-      <mat-card-subtitle>This app is only compatible with Chrome 85+ or Edge Chromium 85+</mat-card-subtitle>
+      <mat-card-title>AirReps Firmware Flasher</mat-card-title>
+      <mat-card-subtitle>This app is only compatible with Airoha based products</mat-card-subtitle>
     </mat-card-header>
   
     <img mat-card-image src="../../assets/airreps-headset.png" alt="AirReps Logo">
     
-    <mat-card-subtitle>
-    </mat-card-subtitle>
-      <app-notification [statusConsumer]="connectedStatus"></app-notification>
+    <app-notification [statusConsumer]="connectedStatus"></app-notification>
     
-    <mat-card-content>
-      
-    </mat-card-content>
-    
-    <mat-card-actions>
-      <button (click)="findDevice()" mat-raised-button color=primary [disabled]="!serialAvailable">
-        {{ serialAvailable ? "Search for device" : "NOT SUPPORTED ON THIS DEIVCE/BROWSER" }}
+    <mat-card-actions [ngStyle]="{'display': getHidden()}">
+      <button (click)="connectionButton()" mat-raised-button color=primary [disabled]="!serialAvailable">
+        {{ connectedStatus ? "Disconnect" : "Connect To Device" }}
       </button>
-      <button (click)="disconnect()" mat-button [disabled]="!serialAvailable">
-        {{ serialAvailable ? "Disconnect" : "" }}
+      <button (click)="getDeviceInformation()" mat-button [disabled]="!connectedStatus">
+        Get device info
       </button>
     </mat-card-actions>
   

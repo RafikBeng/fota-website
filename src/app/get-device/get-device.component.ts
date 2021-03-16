@@ -2,6 +2,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
+declare const navigator: any; 
+
 @Component({
   selector: 'app-get-device',
   templateUrl: './get-device.component.html',
@@ -9,11 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetDeviceComponent implements OnInit {
   
-  serialAvailable: boolean = false;
-  connectedStatus: boolean = false;
-
-  port: SerialPort;
-  encoder = new TextEncoderStream();
+  public serialAvailable: boolean = false;
+  public connectedStatus: boolean = false;
+  private port: SerialPort;
   
   constructor() { }
 
@@ -23,15 +23,33 @@ export class GetDeviceComponent implements OnInit {
     }
   }
 
+   connectionButton() {
+    if (this.connectedStatus) {
+      return this.disconnectFromDevice();
+    }
+    return this.connectToDevice();
+  }
 
-  async findDevice() {
+  async disconnectFromDevice() {    
+    this.port.writable.abort();
+    this.port.readable.cancel()
+    await this.port.close()
+    this.connectedStatus = false
+  }
+
+  async getDeviceInformation() {
+    await console.log(this.port.getSignals());
+  }
+
+
+  async connectToDevice() {
     try {
       const localPort = await navigator.serial.requestPort();
       this.port = localPort;
       await this.port.open({ baudRate: 460800 });
       this.connectedStatus = true;
 
-      this.readStream();
+      // this.readStream();
 
     } catch (e) {
       console.info("Prompt was dismissed ", e);
@@ -42,7 +60,7 @@ export class GetDeviceComponent implements OnInit {
   async readStream() {
     const textDecoder = new TextDecoderStream();
     const readableStreamClosed = this.port.readable.pipeTo(textDecoder.writable);
-    const reader = textDecoder.readable.getReader();
+    var reader = textDecoder.readable.getReader();
 
 
     // while (this.port.readable) {
@@ -82,12 +100,9 @@ export class GetDeviceComponent implements OnInit {
   //   // }
   // }
 
-  async disconnect() {    
-    const info = await this.port.getInfo();
-    console.log(info);
-    // await this.port.readable.getReader().cancel();
-    // await this.port.readable.getReader().releaseLock();
-    // await this.port.close();
-  }
 
+  getHidden() {
+    return this.serialAvailable === true ? '' : 'none';  
+  }
+  
 }
