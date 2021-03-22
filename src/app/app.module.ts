@@ -11,13 +11,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CautionHeaderComponent } from './caution-header/caution-header.component';
 import { NotificationComponent } from './notification/notification.component';
+import { TerminalComponent } from './terminal/terminal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetDeviceComponent,
     CautionHeaderComponent,
-    NotificationComponent
+    NotificationComponent,
+    TerminalComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { NotificationComponent } from './notification/notification.component';
     MatButtonModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [TerminalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
